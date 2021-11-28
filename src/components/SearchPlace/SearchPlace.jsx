@@ -84,4 +84,4 @@ const SearchPlace = () => {
   );
 };
 
-export default SearchPlace;
+export default React.memo(SearchPlace);

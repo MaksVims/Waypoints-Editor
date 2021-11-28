@@ -29,4 +29,4 @@ const DropDown = ({children, show, close}) => {
   );
 };
 
-export default DropDown;
+export default React.memo(DropDown);

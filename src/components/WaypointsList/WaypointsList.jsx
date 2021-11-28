@@ -60,4 +60,4 @@ const WaypointsList = () => {
   );
 };
 
-export default WaypointsList;
+export default React.memo(WaypointsList);

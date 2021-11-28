@@ -17,4 +17,4 @@ const WaypointItem = ({point, handleClick, ...props}) => {
   );
 };
 
-export default WaypointItem;
+export default React.memo(WaypointItem);
