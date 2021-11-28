@@ -36,4 +36,12 @@ describe(">>> C O M P O N E N T --- WaypointsList", function () {
     const result = render(<Provider store={store}><WaypointsList/></Provider>)
     expect(result).toMatchSnapshot()
   });
+
+
+  it('+++ should equal snapshot after adding many items', function () {
+    const result = render(<Provider store={store}><WaypointsList/></Provider>)
+    waypoints.forEach(point => store.dispatch(addWaypoint(point)))
+    result.rerender(<Provider store={store}><WaypointsList/></Provider>)
+    expect(result).toMatchSnapshot()
+  });
 })

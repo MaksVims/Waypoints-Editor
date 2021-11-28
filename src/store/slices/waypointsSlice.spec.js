@@ -1,14 +1,10 @@
 import {addWaypoint, removeWaypoint, reorderedWaypoint, setCenter, updateWaypoint, waypointsReducer} from "./index";
 import {configureStore} from "@reduxjs/toolkit";
+import {mockWaypoints} from "../../const";
 
 
 describe(">>>R E D U C E R --- Test Waypoints Reducer", function () {
-  const waypoints = [
-    {id: 1, address: 'lorem'},
-    {id: 2, address: 'lorem1'},
-    {id: 3, address: 'lorem2'},
-    {id: 4, address: 'lorem3'},
-  ]
+  const waypoints = [...mockWaypoints]
   let store
 
   beforeEach(() => {
