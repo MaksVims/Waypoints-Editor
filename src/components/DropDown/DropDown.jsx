@@ -16,6 +16,7 @@ const DropDown = ({children, show, close}) => {
     }
   }, [close])
   const handlerClick = useCallback((e) => e.preventDefault(), [])
+
   const dropDownClass = cn({
     [classes.dropdown]: true,
     [classes.show]: show
