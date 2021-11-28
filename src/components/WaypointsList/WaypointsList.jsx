@@ -37,13 +37,17 @@ const WaypointsList = () => {
               {waypoints?.map((point, idx) => (
                 <Draggable key={point.id} draggableId={String(point.id)} index={idx}>
                   {provided => (
-                    <WaypointItem
-                      point={point}
+                    <li
+                      className={classes.dragWrapper}
                       ref={provided.innerRef}
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
-                      handleClick={handleRemoveWaypoint}
-                    />
+                    >
+                      <WaypointItem
+                        point={point}
+                        handleClick={handleRemoveWaypoint}
+                      />
+                    </li>
                   )}
                 </Draggable>
               ))}
