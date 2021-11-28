@@ -1,8 +1,12 @@
-# Getting Started with Create React App
+# Инструкция для запуска проекта
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
+- Проверить в const/index наличие ключа GOOGLE_API_KEY (удалю спустя 2 недели после размещения)
+- Если он есть, то скачать проект и при запуске только дать ращрешение на отслеживание геопозиции
+- Если ключа нет то:
+    - заходим https://console.cloud.google.com/home/dashboard и создаем проект
+    - потом генерируем api-ключ который вставляем в проект
+    - далее грейдим свой аккаунт указав биллинг данные https://console.cloud.google.com/billing/
+    - активируем 3-ех месячный триал (нужные api платные, с триалом платить не надо)
+    - заходим https://console.cloud.google.com/billing/api-list и активируем Geocoding API, Maps JavaScript API, Places
+      API
+    - после всех танцев должно заработать    
