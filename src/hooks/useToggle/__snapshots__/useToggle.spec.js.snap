@@ -1,5 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`>>> HOOK --- USE_TOGGLE +++ equal to snapshot  1`] = `
+Object {
+  "rerender": [Function],
+  "result": Object {
+    "all": Array [
+      Array [
+        false,
+        [Function],
+      ],
+    ],
+    "current": Array [
+      false,
+      [Function],
+    ],
+    "error": undefined,
+  },
+  "unmount": [Function],
+  "waitFor": [Function],
+  "waitForNextUpdate": [Function],
+  "waitForValueToChange": [Function],
+}
+`;
+
 exports[`>>> HOOK --- USE_TOGGLE --- equal to snapshot  1`] = `
 Object {
   "rerender": [Function],

@@ -7,7 +7,7 @@ import userEvent from "@testing-library/user-event";
 
 let container = null
 
-describe("DropDown component", () => {
+describe(">>>C O M P O N E N T --- DropDown", () => {
   const children = [1, 2, 3].map(item => (<li key={item}>{item}</li>))
   let close
   let show
@@ -26,7 +26,7 @@ describe("DropDown component", () => {
     container = null
   })
 
-  it('should correct render component', function () {
+  it('+++ should correct render component', function () {
     render(
       <DropDown {...props}>{children}</DropDown>
       , container)
@@ -34,7 +34,7 @@ describe("DropDown component", () => {
     expect(screen.getByRole('list')).toBeInTheDocument()
   });
 
-  it('should correct render children props', function () {
+  it('+++ should correct render children props', function () {
     render(
       <DropDown {...props}>{children}</DropDown>
       , container)
@@ -44,7 +44,7 @@ describe("DropDown component", () => {
     expect(screen.getByText(/3/)).toBeInTheDocument()
   });
 
-  it('should have show class', function () {
+  it('+++ should have show class', function () {
     render(
       <DropDown {...props}>{children}</DropDown>
       , container)
@@ -52,7 +52,7 @@ describe("DropDown component", () => {
     expect(screen.getByRole('list')).toHaveClass(classes.show)
   });
 
-  it('should not have show class show=false', function () {
+  it('+++ should not have show class show=false', function () {
     render(
       <DropDown {...props} show={false}>{children}</DropDown>
       , container)
@@ -60,7 +60,7 @@ describe("DropDown component", () => {
     expect(screen.getByRole('list')).not.toHaveClass(classes.show)
   });
 
-  it('should when the user clicks on the list item, click handler worked ', function () {
+  it('+++ should when the user clicks on the list item, click handler worked ', function () {
     const clickHandler = (e) => {
       e.preventDefault()
       props.close()
@@ -74,7 +74,7 @@ describe("DropDown component", () => {
     expect(close).toHaveBeenCalledTimes(1)
   })
 
-  it('should when clicked outside the dropdown, the close function will be triggered ', function () {
+  it('+++ should when clicked outside the dropdown, the close function will be triggered ', function () {
     render(
       <DropDown {...props}>{children}</DropDown>
       , container)
@@ -83,7 +83,7 @@ describe("DropDown component", () => {
     expect(close).toHaveBeenCalledTimes(1)
   });
 
-  it('should when clicking on dropdown outside the list item, the close function will not work', function () {
+  it('+++ should when clicking on dropdown outside the list item, the close function will not work', function () {
     render(
       <DropDown {...props}>{children}</DropDown>
       , container)
@@ -91,7 +91,7 @@ describe("DropDown component", () => {
     expect(close).toHaveBeenCalledTimes(0)
   });
 
-  it('should equal to snapshot', function () {
+  it('+++ should equal to snapshot', function () {
     const component = render(
       <DropDown {...props}>{children}</DropDown>
       , container)

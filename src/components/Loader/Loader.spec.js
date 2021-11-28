@@ -15,7 +15,7 @@ const overrideLoader = css`
 const props = {loading: true, size: 100, color: 'red', css: overrideLoader}
 let container = null;
 
-describe("Loading component", () => {
+describe(">>>C O M P O N E N T --- Loading component", () => {
 
   beforeEach(() => {
     container = document.createElement('div')
@@ -27,19 +27,19 @@ describe("Loading component", () => {
     container = null
   })
 
-  it('should render component', function () {
+  it('+++ should render component', function () {
     render(<Loader {...props}/>, container)
     expect(container.children.length).not.toBeNull()
   });
 
 
-  it('should not render component', function () {
+  it('+++ should not render component', function () {
     render(<Loader {...props} loading={false}/>, container)
     expect(container.children.length).toBe(0)
   });
 
 
-  it('should component equal to snapshot', function () {
+  it('+++ should component equal to snapshot', function () {
     const loader = render(<Loader {...props}/>, container)
     expect(loader).toMatchSnapshot()
   });
