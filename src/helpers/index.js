@@ -12,12 +12,15 @@ export function createWaypointObject({data, lng, lat, id = null}) {
 }
 
 export function createRoutePath(route) {
+  if (!route) return null
   const google = window.google
-  return new google.maps.Polyline({
-    path: route,
-    geodesic: true,
-    strokeColor: '#0244e1',
-    strokeOpacity: 1.0,
-    strokeWeight: 2
-  })
+  if (google?.maps?.Polyline) {
+    return new google.maps.Polyline({
+      path: route,
+      geodesic: true,
+      strokeColor: '#0244e1',
+      strokeOpacity: 1.0,
+      strokeWeight: 2
+    })
+  }
 }

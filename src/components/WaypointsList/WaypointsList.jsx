@@ -6,7 +6,7 @@ import {removeWaypoint, reorderedWaypoint} from "../../store/slices";
 
 
 const WaypointsList = () => {
-  const waypoints = useSelector(state => state.waypoints.waypoints)
+  const waypoints = useSelector(state => state?.waypoints?.waypoints)
   const dispatch = useDispatch()
 
   const handleRemoveWaypoint = useCallback((id) => dispatch(removeWaypoint(id)), [dispatch])
@@ -42,7 +42,7 @@ const WaypointsList = () => {
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
                     >
-                      <p>{point.geo.address}</p>
+                      <p>{point?.geo?.address}</p>
                       <button
                         className={classes.removeButton}
                         onClick={() => handleRemoveWaypoint(point.id)}
