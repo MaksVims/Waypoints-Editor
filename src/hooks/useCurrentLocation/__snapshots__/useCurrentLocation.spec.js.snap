@@ -1,52 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`>>> HOOK +++ USE_CURRENT_LOCATION +++ should equal snapshot 1`] = `
-Object {
-  "rerender": [Function],
-  "result": Object {
-    "all": Array [
-      Array [
-        null,
-        true,
-      ],
-    ],
-    "current": Array [
-      null,
-      true,
-    ],
-    "error": undefined,
-  },
-  "unmount": [Function],
-  "waitFor": [Function],
-  "waitForNextUpdate": [Function],
-  "waitForValueToChange": [Function],
-}
-`;
-
 exports[`>>> HOOK --- USE_CURRENT_LOCATION +++ should equal snapshot 1`] = `
-Object {
-  "rerender": [Function],
-  "result": Object {
-    "all": Array [
-      Array [
-        null,
-        true,
-      ],
-    ],
-    "current": Array [
-      null,
-      true,
-    ],
-    "error": undefined,
-  },
-  "unmount": [Function],
-  "waitFor": [Function],
-  "waitForNextUpdate": [Function],
-  "waitForValueToChange": [Function],
-}
-`;
-
-exports[`>>> HOOK --- USE_CURRENT_LOCATION --- should equal snapshot 1`] = `
 Object {
   "rerender": [Function],
   "result": Object {

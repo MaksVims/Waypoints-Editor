@@ -3,17 +3,13 @@ import {addWaypoint, waypointsReducer} from "../../store/slices";
 import {render, screen} from "@testing-library/react";
 import {Provider} from "react-redux";
 import WaypointsList from "./WaypointsList";
+import {mockWaypoints} from "../../const";
 
 describe(">>> C O M P O N E N T --- WaypointsList", function () {
-  let store
-  const waypoints = [
-    {id: 1, geo: {address: 'lorem'}, coords: {lat: 0, lng: 1}},
-    {id: 2, geo: {address: 'lorem1'}, coords: {lat: 3, lng: 4}},
-    {id: 3, geo: {address: 'lorem2'}, coords: {lat: 5, lng: 4}},
-    {id: 4, geo: {address: 'lorem3'}, coords: {lat: 1, lng: 3}},
-  ]
+  let store, waypoints
 
   beforeEach(() => {
+    waypoints = [...mockWaypoints]
     store = configureStore({
       reducer: {'waypoints': waypointsReducer}
     })
@@ -23,8 +19,8 @@ describe(">>> C O M P O N E N T --- WaypointsList", function () {
     render(<Provider store={store}><WaypointsList/></Provider>)
     expect(screen.queryByText('lorem')).toBeNull()
     expect(screen.getByRole('list')).toBeInTheDocument()
-
   });
+
 
   it('+++ should update view after added waypoints in redux', function () {
     const {rerender} = render(<Provider store={store}><WaypointsList/></Provider>)
@@ -35,8 +31,17 @@ describe(">>> C O M P O N E N T --- WaypointsList", function () {
     expect(screen.getByText('lorem')).toBeInTheDocument()
   });
 
+
   it('+++ should equal snapshot', function () {
     const result = render(<Provider store={store}><WaypointsList/></Provider>)
+    expect(result).toMatchSnapshot()
+  });
+
+
+  it('+++ should equal snapshot after adding many items', function () {
+    const result = render(<Provider store={store}><WaypointsList/></Provider>)
+    waypoints.forEach(point => store.dispatch(addWaypoint(point)))
+    result.rerender(<Provider store={store}><WaypointsList/></Provider>)
     expect(result).toMatchSnapshot()
   });
 })

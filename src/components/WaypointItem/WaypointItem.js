@@ -1,12 +1,11 @@
 import React from 'react';
 import classes from './style.module.scss'
 
-const WaypointItem = React.forwardRef(({point, handleClick, ...props}, ref) => {
+const WaypointItem = ({point, handleClick, ...props}) => {
   return (
-    <li
+    <div
       className={classes.waypoint}
       {...props}
-      ref={ref}
     >
       <p>{point?.geo?.address}</p>
       <button
@@ -14,8 +13,8 @@ const WaypointItem = React.forwardRef(({point, handleClick, ...props}, ref) => {
         onClick={() => handleClick(point.id)}
       >-
       </button>
-    </li>
+    </div>
   );
-});
+};
 
 export default WaypointItem;

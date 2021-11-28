@@ -12,7 +12,6 @@ const containerStyle = {
   height: '100%'
 };
 
-
 function Map() {
   const currentCenter = useSelector(state => state.waypoints.currentCenter)
   const waypoints = useSelector(state => state.waypoints.waypoints)
@@ -21,7 +20,6 @@ function Map() {
   const mapRef = useRef()
   const dispatch = useDispatch()
   const {showPopover} = usePopover()
-
 
   const loadMap = useCallback((map) => {
     mapRef.current = map
