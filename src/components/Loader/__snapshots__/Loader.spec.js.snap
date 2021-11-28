@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Loading component should component equal to snapshot 1`] = `
+exports[`>>>C O M P O N E N T --- Loading component +++ should component equal to snapshot 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>

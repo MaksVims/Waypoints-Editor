@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DropDown component should equal to snapshot 1`] = `
+exports[`>>>C O M P O N E N T --- DropDown +++ should equal to snapshot 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
