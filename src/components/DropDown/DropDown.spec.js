@@ -90,4 +90,12 @@ describe("DropDown component", () => {
     userEvent.click(screen.getByRole('list'))
     expect(close).toHaveBeenCalledTimes(0)
   });
+
+  it('should equal to snapshot', function () {
+    const component = render(
+      <DropDown {...props}>{children}</DropDown>
+      , container)
+
+    expect(component).toMatchSnapshot()
+  });
 })
