@@ -1,0 +1,21 @@
+@import "../../styles";
+
+.container {
+  width: 55%;
+  height: auto;
+  min-height: 800px;
+
+  @media (max-width: $media_large) {
+  width: 60%;
+  min-height: 750px;
+}
+
+  @media (max-width: $media_middle) {
+  min-height: 650px;
+}
+
+  @media (max-width: $media_small) {
+  width: 50%;
+  min-height: 450px;
+}
+}

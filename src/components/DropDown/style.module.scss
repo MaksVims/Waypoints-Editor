@@ -1,0 +1,19 @@
+@import "../../styles";
+
+.dropdown {
+  display: none;
+  padding: 10px 0;
+  position: absolute;
+  width: 100%;
+  top: calc(100% + 2px);
+  left: 0;
+  background-color: #fff;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  box-shadow: 4px 5px 10px rgba(0, 0, 0, .7);
+  z-index: $zIndex_dropdown;
+}
+
+.show {
+  display: block;
+}

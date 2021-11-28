@@ -1,48 +1,11 @@
 import React, {useCallback, useEffect, useRef} from 'react';
 import {useDispatch} from "react-redux";
 import usePlacesAutocomplete, {getGeocode, getLatLng} from "use-places-autocomplete";
-import styled from "styled-components";
-import {addWaypoint, setCenter} from "../store/slices";
-import DropDown from "./DropDown";
-import {useToggle} from "../hooks";
-import {createWaypointObject} from "../helpers";
-
-const SearchContainer = styled.div`
-  position: relative;
-  margin-bottom: 15px;
-`
-
-const Address = styled.li`
-  padding: 8px;
-  font-size: 18px;
-  cursor: pointer;
-  transition: background-color .2s;
-
-  &:hover {
-    transition: background-color .2s;
-    background-color: ${props => props.theme.color.light};
-  }
-`
-
-const Search = styled.input`
-  border: 1px solid ${({theme}) => theme.color.grey};
-  padding: 7px;
-  font-size: 16px;
-  border-radius: 5px;
-  width: 100%;
-  cursor: pointer;
-  transition: box-shadow .2s;
-
-  &:focus {
-    border: 2px solid ${({theme}) => theme.color.primary};
-    padding: 6px;
-  }
-
-  &:hover {
-    transition: box-shadow .2s;
-    box-shadow: 1px 2px 6px rgba(0, 0, 0, .1);
-  }
-`
+import {addWaypoint, setCenter} from "../../store/slices";
+import DropDown from "../DropDown";
+import {useToggle} from "../../hooks";
+import {createWaypointObject} from "../../helpers";
+import classes from './style.module.scss'
 
 const SearchPlace = () => {
   const dispatch = useDispatch()
@@ -91,8 +54,9 @@ const SearchPlace = () => {
   const closeDropDown = useCallback(() => setDropDownShow(false), [setDropDownShow])
 
   return (
-    <SearchContainer>
-      <Search
+    <div className={classes.container}>
+      <input
+        className={classes.search}
         ref={searchRef}
         onKeyDown={handlePressEnterSearch}
         value={value}
@@ -107,15 +71,16 @@ const SearchPlace = () => {
         close={closeDropDown}
       >
         {suggestions?.data?.map(address => (
-          <Address
+          <li
+            className={classes.address}
             key={address.place_id}
             onClick={() => handleClickAddress(address.description)}
           >
             {address.description}
-          </Address>
+          </li>
         ))}
       </DropDown>
-    </SearchContainer>
+    </div>
   );
 };
 

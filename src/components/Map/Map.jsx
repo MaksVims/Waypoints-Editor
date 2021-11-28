@@ -1,36 +1,17 @@
 import React, {useCallback, useEffect, useRef} from 'react';
 import {GoogleMap, Marker} from "@react-google-maps/api";
 import {useDispatch, useSelector} from "react-redux";
-import {updateWaypoint} from "../store/slices";
-import styled from "styled-components";
+import {updateWaypoint} from "../../store/slices";
 import {getGeocode} from "use-places-autocomplete";
-import {usePopover} from "../contexts";
-import {createRoutePath, createWaypointObject} from "../helpers";
+import {usePopover} from "../../contexts";
+import {createRoutePath, createWaypointObject} from "../../helpers";
+import classes from './style.module.scss'
 
 const containerStyle = {
   width: '100%',
   height: '100%'
 };
 
-const MapContainer = styled.div`
-  width: 55%;
-  height: auto;
-  min-height: 800px;
-
-  @media (max-width: ${props => props.theme.media.large}) {
-    width: 60%;
-    min-height: 750px;
-  }
-
-  @media (max-width: ${props => props.theme.media.middle}) {
-    min-height: 650px;
-  }
-
-  @media (max-width: ${props => props.theme.media.small}) {
-    width: 50%;
-    min-height: 450px;
-  }
-`
 
 function Map() {
   const currentCenter = useSelector(state => state.waypoints.currentCenter)
@@ -76,7 +57,7 @@ function Map() {
   }, [dispatch])
 
   return (
-    <MapContainer>
+    <section className={classes.container}>
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={currentCenter}
@@ -95,7 +76,7 @@ function Map() {
           />
         ))}
       </GoogleMap>
-    </MapContainer>
+    </section>
   )
 }
 

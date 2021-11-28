@@ -1,19 +1,6 @@
 import React, {useCallback, useEffect} from 'react';
-import styled from "styled-components";
-
-const DropDownContainer = styled.ul`
-  display: ${props => props.show ? 'block' : 'none'};
-  padding: 10px 0;
-  position: absolute;
-  width: 100%;
-  top: calc(100% + 2px);
-  left: 0;
-  background-color: #fff;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  box-shadow: 4px 5px 10px rgba(0, 0, 0, .7);
-  z-index: ${({theme}) => theme.zIndex.dropdown};
-`
+import classes from './style.module.scss'
+import cn from 'classnames'
 
 const DropDown = ({children, show, close}) => {
 
@@ -29,11 +16,15 @@ const DropDown = ({children, show, close}) => {
     }
   }, [close])
   const handlerClick = useCallback((e) => e.preventDefault(), [])
+  const dropDownClass = cn({
+    [classes.dropdown]: true,
+    [classes.show]: show
+  })
 
   return (
-    <DropDownContainer show={show} onClick={handlerClick}>
+    <ul className={dropDownClass} onClick={handlerClick}>
       {children}
-    </DropDownContainer>
+    </ul>
   );
 };
 
