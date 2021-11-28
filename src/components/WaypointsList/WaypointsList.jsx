@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import classes from './style.module.scss'
 import {DragDropContext, Draggable, Droppable} from "react-beautiful-dnd";
 import {removeWaypoint, reorderedWaypoint} from "../../store/slices";
+import WaypointItem from "../WaypointItem/WaypointItem";
 
 
 const WaypointsList = () => {
@@ -36,19 +37,13 @@ const WaypointsList = () => {
               {waypoints?.map((point, idx) => (
                 <Draggable key={point.id} draggableId={String(point.id)} index={idx}>
                   {provided => (
-                    <li
-                      className={classes.waypoint}
+                    <WaypointItem
+                      point={point}
                       ref={provided.innerRef}
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
-                    >
-                      <p>{point?.geo?.address}</p>
-                      <button
-                        className={classes.removeButton}
-                        onClick={() => handleRemoveWaypoint(point.id)}
-                      >-
-                      </button>
-                    </li>
+                      handleClick={handleRemoveWaypoint}
+                    />
                   )}
                 </Draggable>
               ))}

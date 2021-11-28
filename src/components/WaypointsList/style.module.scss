@@ -1,49 +1,7 @@
 @import "../../styles";
 
-.waypoint {
-  background-color: #fff;
-  cursor: pointer;
-  font-size: 21px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px;
-  border: 1px solid $color_light;
-
-  &:not(:last-child) {
-    margin-bottom: 10px;
-  }
-
-  @media (max-width: $media_middle) {
-    font-size: 18px;
-  }
-}
-
 .waypointList {
   position: relative;
   width: 100%;
 }
 
-.removeButton {
-  border-radius: 2px;
-  font-size: 21px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: $color_danger;
-  width: 25px;
-  height: 25px;
-  cursor: pointer;
-  color: #fff;
-  margin-left: 5px;
-  flex-shrink: 0;
-
-  &:hover {
-    transform: scale(1.05);
-  }
-
-  @media (max-width: $media_middle) {
-    width: 22px;
-    height: 22px;
-  }
-}
