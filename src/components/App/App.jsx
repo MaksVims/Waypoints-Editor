@@ -13,7 +13,9 @@ const App = () => {
   const dispatch = useDispatch()
   // Находим геопозицию пользователя
   const [initialLocation, loading] = useCurrentLocation(useCallback((position) => {
-    dispatch(setCenter({lat: position.coords.latitude, lng: position.coords.longitude}))
+    if (position) {
+      return dispatch(setCenter({lat: position.coords.latitude, lng: position.coords.longitude}))
+    }
   }, [dispatch]))
 
   if (loading) return <Loader loading={loading} color={"blue"} size={150}/>
