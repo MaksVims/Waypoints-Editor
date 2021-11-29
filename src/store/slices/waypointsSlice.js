@@ -26,9 +26,9 @@ const waypointsSlice = createSlice({
       })
     },
 
-    reorderedWaypoint: (state, {payload} = {}) => {
+    reorderedWaypoint: (state, action) => {
       // меняем порядок элементов в массиве
-      const {from, to} = payload
+      const {from, to} = action.payload
       const waypoints = state.waypoints.slice()
       const [reorderWaypoint] = waypoints.splice(from, 1)
       waypoints.splice(to, 0, reorderWaypoint)
