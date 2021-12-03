@@ -66,6 +66,9 @@ function Map() {
         center={currentCenter}
         zoom={10}
         onLoad={loadMap}
+        options={{
+          disableDefaultUI: true
+        }}
       >
         {waypoints?.map(point => (
           <Marker
