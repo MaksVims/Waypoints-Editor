@@ -6,7 +6,7 @@ import {LoadScript} from "@react-google-maps/api";
 import {store} from "./store";
 import {PopoverContext} from "./contexts";
 import {GOOGLE_API_KEY, libraries} from "./const";
-import {App} from "./components";
+import {App} from "./components/App";
 
 
 ReactDOM.render(
