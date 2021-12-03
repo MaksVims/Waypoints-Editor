@@ -3,21 +3,22 @@ import {useDispatch, useSelector} from "react-redux";
 import classes from './style.module.scss'
 import {DragDropContext, Draggable, Droppable} from "react-beautiful-dnd";
 import {removeWaypoint, reorderedWaypoint} from "../../store/slices";
-import WaypointItem from "../WaypointItem/WaypointItem";
+import {WaypointItem} from "../WaypointItem";
 
 
 const WaypointsList = () => {
   const waypoints = useSelector(state => state?.waypoints?.waypoints)
   const dispatch = useDispatch()
 
-  const handleRemoveWaypoint = useCallback((id) => dispatch(removeWaypoint(id)), [dispatch])
+  const handleRemoveWaypoint = useCallback(id => dispatch(removeWaypoint(id)), [dispatch])
 
-  const handleOnDragEnd = useCallback((result) => {
+  const handleOnDragEnd = useCallback(result => {
     // Проверка на drop внутри контейнера
     if (!result.destination) return
 
     const from = result.source.index
     const to = result.destination.index
+
     // Изменяем порядок элементов в массиве
     dispatch(reorderedWaypoint({from, to}))
   }, [dispatch])

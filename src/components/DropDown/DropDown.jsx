@@ -15,7 +15,8 @@ const DropDown = ({children, show, close}) => {
       document.body.removeEventListener('click', closeDropDown)
     }
   }, [close])
-  const handlerClick = useCallback((e) => e.preventDefault(), [])
+
+  const handlerClick = useCallback(e => e.preventDefault(), [])
 
   const dropDownClass = cn({
     [classes.dropdown]: true,
@@ -23,7 +24,10 @@ const DropDown = ({children, show, close}) => {
   })
 
   return (
-    <ul className={dropDownClass} onClick={handlerClick}>
+    <ul
+      className={dropDownClass}
+      onClick={handlerClick}
+    >
       {children}
     </ul>
   );

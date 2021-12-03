@@ -17,7 +17,11 @@ describe(">>> C O M P O N E N T --- APP ", function () {
   it('+++ should correct initial first render ', function () {
 
     act(() => {
-      render(<Provider store={store}><App/></Provider>)
+      render(
+        <Provider store={store}>
+          <App/>
+        </Provider>
+      )
     })
 
     expect(screen.queryByRole('textbox')).toBeNull()
@@ -25,7 +29,11 @@ describe(">>> C O M P O N E N T --- APP ", function () {
   });
 
   it('should equal to snapshot', function () {
-    const result = render(<Provider store={store}><App/></Provider>)
+    const result = render(
+      <Provider store={store}>
+        <App/>
+      </Provider>
+    )
     expect(result).toMatchSnapshot()
   });
 })

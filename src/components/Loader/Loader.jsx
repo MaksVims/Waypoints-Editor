@@ -15,7 +15,12 @@ const overrideLoader = css`
 const Loader = ({loading, color, size}) => {
   return (
     <PuffLoader
-      loading={loading} color={color} css={overrideLoader} size={size} speedMultiplier={1.5}/>
+      loading={loading}
+      color={color}
+      css={overrideLoader}
+      size={size}
+      speedMultiplier={1.5}
+    />
   );
 };
 

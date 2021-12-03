@@ -1,6 +1,11 @@
 export const GOOGLE_API_KEY = 'AIzaSyBonvH3Y1Y_iIH1fHmvjxsbNH3nCTWQeY8'
 export const libraries = ["places"]
 
+export const CONTAINER_STYLE = {
+  width: '100%',
+  height: '100%'
+};
+
 export const mockWaypoint = {
   id: 1,
   geo: {

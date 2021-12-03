@@ -14,9 +14,13 @@ function ConsumerComponent() {
     e.domEvent.path.push(event.currentTarget)
     showPopover(e, text)
   }
-  return <>
-    <button id="btn" onClick={handleClick}>Click</button>
-  </>
+
+  return (
+    <>
+      <button id="btn" onClick={handleClick}>Click</button>
+    </>
+  )
+
 }
 
 describe(">>> C O N T E X T --- Popover Context", function () {
@@ -31,7 +35,8 @@ describe(">>> C O N T E X T --- Popover Context", function () {
     const {getByRole} = render(
       <PopoverContext>
         <ConsumerComponent/>
-      </PopoverContext>)
+      </PopoverContext>
+    )
 
     userEvent.click(getByRole('button'))
     expect(screen.queryByText('hello')).toBeInTheDocument()
@@ -41,7 +46,8 @@ describe(">>> C O N T E X T --- Popover Context", function () {
     const result = render(
       <PopoverContext>
         <ConsumerComponent/>
-      </PopoverContext>)
+      </PopoverContext>
+    )
 
     userEvent.click(result.getByRole('button'))
     expect(result).toMatchSnapshot()

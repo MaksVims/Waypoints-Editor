@@ -5,13 +5,17 @@ import DropDown from "./DropDown";
 import classes from './style.module.scss'
 import userEvent from "@testing-library/user-event";
 
-let container = null
 
 describe(">>>C O M P O N E N T --- DropDown", () => {
-  const children = [1, 2, 3].map(item => (<li key={item}>{item}</li>))
-  let close
-  let show
-  let props
+  let container = null
+  const children = [1, 2, 3].map(item => (
+    <li key={item}>
+      {item}
+    </li>
+  ))
+  let close,
+    show,
+    props
 
   beforeEach(() => {
     show = true
@@ -28,16 +32,22 @@ describe(">>>C O M P O N E N T --- DropDown", () => {
 
   it('+++ should correct render component', function () {
     render(
-      <DropDown {...props}>{children}</DropDown>
-      , container)
+      <DropDown {...props}>
+        {children}
+      </DropDown>
+      , container
+    )
 
     expect(screen.getByRole('list')).toBeInTheDocument()
   });
 
   it('+++ should correct render children props', function () {
     render(
-      <DropDown {...props}>{children}</DropDown>
-      , container)
+      <DropDown {...props}>
+        {children}
+      </DropDown>
+      , container
+    )
 
     expect(screen.getByText(/1/)).toBeInTheDocument()
     expect(screen.getByText(/2/)).toBeInTheDocument()
@@ -46,16 +56,22 @@ describe(">>>C O M P O N E N T --- DropDown", () => {
 
   it('+++ should have show class', function () {
     render(
-      <DropDown {...props}>{children}</DropDown>
-      , container)
+      <DropDown {...props}>
+        {children}
+      </DropDown>
+      , container
+    )
 
     expect(screen.getByRole('list')).toHaveClass(classes.show)
   });
 
-  it('+++ should not have show class show=false', function () {
+  it('+++ should not have show class show = false', function () {
     render(
-      <DropDown {...props} show={false}>{children}</DropDown>
-      , container)
+      <DropDown {...props} show={false}>
+        {children}
+      </DropDown>
+      , container
+    )
 
     expect(screen.getByRole('list')).not.toHaveClass(classes.show)
   });
@@ -65,10 +81,22 @@ describe(">>>C O M P O N E N T --- DropDown", () => {
       e.preventDefault()
       props.close()
     }
-    const children = [1, 2, 3].map(item => (<li onClick={clickHandler} key={item}>{item}</li>))
+
+    const children = [1, 2, 3].map(item => (
+      <li
+        onClick={clickHandler}
+        key={item}
+      >
+        {item}
+      </li>
+    ))
+
     render(
-      <DropDown {...props}>{children}</DropDown>
-      , container)
+      <DropDown {...props}>
+        {children}
+      </DropDown>
+      , container
+    )
 
     userEvent.click(screen.getAllByRole('listitem')[0])
     expect(close).toHaveBeenCalledTimes(1)
@@ -76,8 +104,11 @@ describe(">>>C O M P O N E N T --- DropDown", () => {
 
   it('+++ should when clicked outside the dropdown, the close function will be triggered ', function () {
     render(
-      <DropDown {...props}>{children}</DropDown>
-      , container)
+      <DropDown {...props}>
+        {children}
+      </DropDown>
+      , container
+    )
 
     userEvent.click(screen.getByRole('main'))
     expect(close).toHaveBeenCalledTimes(1)
@@ -85,16 +116,23 @@ describe(">>>C O M P O N E N T --- DropDown", () => {
 
   it('+++ should when clicking on dropdown outside the list item, the close function will not work', function () {
     render(
-      <DropDown {...props}>{children}</DropDown>
-      , container)
+      <DropDown {...props}>
+        {children}
+      </DropDown>
+      , container
+    )
+
     userEvent.click(screen.getByRole('list'))
     expect(close).toHaveBeenCalledTimes(0)
   });
 
   it('+++ should equal to snapshot', function () {
     const component = render(
-      <DropDown {...props}>{children}</DropDown>
-      , container)
+      <DropDown {...props}>
+        {children}
+      </DropDown>
+      , container
+    )
 
     expect(component).toMatchSnapshot()
   });

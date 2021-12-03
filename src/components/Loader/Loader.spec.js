@@ -12,7 +12,14 @@ const overrideLoader = css`
   margin: auto;
   border-color: red;
 `;
-const props = {loading: true, size: 100, color: 'red', css: overrideLoader}
+
+const props = {
+  loading: true,
+  size: 100,
+  color: 'red',
+  css: overrideLoader
+}
+
 let container = null;
 
 describe(">>>C O M P O N E N T --- Loading component", () => {

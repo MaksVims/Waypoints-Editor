@@ -13,7 +13,9 @@ export function createWaypointObject({data, lng, lat, id = null}) {
 
 export function createRoutePath(route) {
   if (!route) return null
+
   const google = window.google
+
   if (google?.maps?.Polyline) {
     return new google.maps.Polyline({
       path: route,

@@ -13,9 +13,11 @@ const PopoverContext = ({children}) => {
   const [options, setOptions] = useState(() => ({anchorEl: null, text: ''}))
 
   const showPopover = useCallback((event, text) => {
-    setOptions(options => (
-      {...options, text, anchorEl: event.domEvent.path[0]}
-    ))
+    setOptions(options => ({
+      ...options,
+      text,
+      anchorEl: event.domEvent.path[0]
+    }))
     setShow(true)
   }, [setShow, setOptions])
 
@@ -36,7 +38,9 @@ const PopoverContext = ({children}) => {
           horizontal: 'center',
         }}
       >
-        <Typography sx={{p: 1, fontSize: 13}}>{options?.text}</Typography>
+        <Typography sx={{p: 1, fontSize: 13}}>
+          {options?.text}
+        </Typography>
       </Popover>
       {children}
     </PopoverContextContainer.Provider>

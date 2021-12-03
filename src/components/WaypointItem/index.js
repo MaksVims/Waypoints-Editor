@@ -1,1 +1,1 @@
-import {default} from './WaypointItem'
+export {default as WaypointItem} from './WaypointItem'

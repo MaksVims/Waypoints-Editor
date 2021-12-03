@@ -1,1 +1,1 @@
-export {default} from './WaypointsList'
+export {default as WaypointsList} from './WaypointsList'

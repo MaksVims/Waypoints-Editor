@@ -6,7 +6,8 @@ import WaypointsList from "./WaypointsList";
 import {mockWaypoints} from "../../const";
 
 describe(">>> C O M P O N E N T --- WaypointsList", function () {
-  let store, waypoints
+  let store,
+    waypoints
 
   beforeEach(() => {
     waypoints = [...mockWaypoints]
@@ -16,32 +17,62 @@ describe(">>> C O M P O N E N T --- WaypointsList", function () {
   })
 
   it('+++ should correct render component', function () {
-    render(<Provider store={store}><WaypointsList/></Provider>)
+    render(
+      <Provider store={store}>
+        <WaypointsList/>
+      </Provider>
+    )
+
     expect(screen.queryByText('lorem')).toBeNull()
     expect(screen.getByRole('list')).toBeInTheDocument()
   });
 
 
   it('+++ should update view after added waypoints in redux', function () {
-    const {rerender} = render(<Provider store={store}><WaypointsList/></Provider>)
+    const {rerender} = render(
+      <Provider store={store}>
+        <WaypointsList/>
+      </Provider>
+    )
+
     waypoints.forEach(point => store.dispatch(addWaypoint(point)))
 
-    rerender(<Provider store={store}><WaypointsList/></Provider>)
+    rerender(
+      <Provider store={store}>
+        <WaypointsList/>
+      </Provider>
+    )
 
     expect(screen.getByText('lorem')).toBeInTheDocument()
   });
 
 
   it('+++ should equal snapshot', function () {
-    const result = render(<Provider store={store}><WaypointsList/></Provider>)
+    const result = render(
+      <Provider store={store}>
+        <WaypointsList/>
+      </Provider>
+    )
+
     expect(result).toMatchSnapshot()
   });
 
 
   it('+++ should equal snapshot after adding many items', function () {
-    const result = render(<Provider store={store}><WaypointsList/></Provider>)
+    const result = render(
+      <Provider store={store}>
+        <WaypointsList/>
+      </Provider>
+    )
+
     waypoints.forEach(point => store.dispatch(addWaypoint(point)))
-    result.rerender(<Provider store={store}><WaypointsList/></Provider>)
+
+    result.rerender(
+      <Provider store={store}>
+        <WaypointsList/>
+      </Provider>
+    )
+
     expect(result).toMatchSnapshot()
   });
 })

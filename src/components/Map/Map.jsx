@@ -6,11 +6,8 @@ import {getGeocode} from "use-places-autocomplete";
 import {usePopover} from "../../contexts";
 import {createRoutePath, createWaypointObject} from "../../helpers";
 import classes from './style.module.scss'
+import {CONTAINER_STYLE} from "../../const";
 
-const containerStyle = {
-  width: '100%',
-  height: '100%'
-};
 
 function Map() {
   const currentCenter = useSelector(state => state.waypoints.currentCenter)
@@ -40,16 +37,24 @@ function Map() {
 
 
   // Обработка drag & drop маркеров на карте
-  const dragStart = useCallback((e, pointId) => draggablePointIdRef.current = pointId, [])
+  const dragStart = useCallback((e, pointId) => {
+    draggablePointIdRef.current = pointId
+  }, [])
 
-  const dragEnd = useCallback(async (e) => {
+
+  const dragEnd = useCallback(async e => {
     if (draggablePointIdRef.current) {
       const lng = e.latLng.lng()
       const lat = e.latLng.lat()
       const results = await getGeocode({location: {lat, lng}})
-      dispatch(updateWaypoint(
-        createWaypointObject({data: results[1], lng, lat, id: draggablePointIdRef.current})
-      ))
+      const waypoint = createWaypointObject({
+        data: results[1],
+        lng,
+        lat,
+        id: draggablePointIdRef.current
+      })
+
+      dispatch(updateWaypoint(waypoint))
       draggablePointIdRef.current = null
     }
   }, [dispatch])
@@ -57,7 +62,7 @@ function Map() {
   return (
     <section className={classes.container}>
       <GoogleMap
-        mapContainerStyle={containerStyle}
+        mapContainerStyle={CONTAINER_STYLE}
         center={currentCenter}
         zoom={10}
         onLoad={loadMap}
