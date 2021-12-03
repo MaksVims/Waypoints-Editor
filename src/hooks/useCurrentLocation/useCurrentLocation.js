@@ -12,7 +12,7 @@ export function useCurrentLocation(callback) {
         setData(position)
       })
     }
-  }, [])
+  }, [callback])
 
   return [data, loading]
 }
